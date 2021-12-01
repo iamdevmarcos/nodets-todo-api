@@ -7,18 +7,18 @@ import apiRoutes from './routes/api';
 
 dotenv.config();
 
-const server = express();
+const app = express();
 
-server.use(cors());
+app.use(cors());
 
-server.use(express.static(path.join(__dirname, '../public')));
-server.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.urlencoded({ extended: true }));
 
-server.use('/', apiRoutes);
-server.use((req: Request, res: Response) => {
-    res.status(404).json({
-        error: "Endpoint not found"
+app.use('/', apiRoutes);
+app.use((req: Request, res: Response) => {
+    res.status(400).json({
+        error: 'Endpoint not found...'
     });
 });
 
-server.listen(process.env.PORT);
+app.listen(process.env.PORT);

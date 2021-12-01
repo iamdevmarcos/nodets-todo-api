@@ -17,8 +17,8 @@ export const add = async (req: Request, res: Response) => {
         res.status(201).json({ item: newTodo });
     }
 
-    res.json({
-        error: 'Dados não enviados'
+    res.status(400).json({
+        error: 'Dados não enviados...'
     });
 }
 
